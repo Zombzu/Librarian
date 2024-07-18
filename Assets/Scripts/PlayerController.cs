@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float sprintSpeed = 10f;
-    public float gravity = -9.81f;
+    public float gravity = -20f;
+    public float stairClimbSpeed = 2f;
 
     public float maxStamina = 5f;
     private float currentStamina;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 velocity;
-    private bool isGrounded;
+
     
 
     void Start()
@@ -26,8 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
-        if (isGrounded && velocity.y < 0)
+        if (velocity.y < 0)
         {
             velocity.y = -2f; 
         }
@@ -62,10 +62,14 @@ public class PlayerController : MonoBehaviour
         
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        
+       
     }
-    
+
+   //function for UI
     public float GetCurrentStamina()
     {
         return currentStamina;
     }
+    
 }
