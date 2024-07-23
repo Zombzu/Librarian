@@ -10,11 +10,6 @@ public class InventoryScroll : MonoBehaviour
 
     void Update()
     {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0)
-        {
-            scrollRect.horizontalNormalizedPosition -= scroll * scrollSpeed * Time.deltaTime;
-        }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
