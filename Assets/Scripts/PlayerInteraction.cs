@@ -10,11 +10,11 @@ public class PlayerInteraction : MonoBehaviour
     public float outlineWidth = 4f;
     //public GameObject interactionPrompt; 
 
-    private Camera playerCamera;
-    private Outline currentObject;
+    private Camera _playerCamera;
+    private Outline _currentObject;
     void Start()
     {
-        playerCamera = Camera.main;
+        _playerCamera = Camera.main;
        // interactionPrompt.SetActive(false);
     }
 
@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void CheckForInteractable()
     {
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactionRange, interactableLayer))
@@ -35,20 +35,20 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)
             {
               //  interactionPrompt.SetActive(true);
-              currentObject = interactable.gameObject.GetComponent<Outline>(); 
-              currentObject.OutlineWidth = 3f;
+              _currentObject = interactable.gameObject.GetComponent<Outline>(); 
+              _currentObject.OutlineWidth = 3f;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    interactable.Interact(interactable.gameObject.tag);
+                    interactable.Interact(interactable.gameObject.tag, this.gameObject);
                 }
             }
         }
         else
         {
            // interactionPrompt.SetActive(false);
-           if (currentObject != null)
+           if (_currentObject != null)
            {
-               currentObject.OutlineWidth = 0f;
+               _currentObject.OutlineWidth = 0f;
            }
            
         }

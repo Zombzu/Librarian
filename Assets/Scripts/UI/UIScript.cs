@@ -14,7 +14,7 @@ public class UIScript : MonoBehaviour
     public Color lowStaminaColor = Color.red; 
     public float lowStaminaThreshold = 1f;
 
-    private Image fillImage;
+    private Image _fillImage;
     
     void Start()
     {
@@ -22,8 +22,8 @@ public class UIScript : MonoBehaviour
         staminaSlider.value = playerController.GetCurrentStamina();
         staminaSlider.gameObject.SetActive(false);
         
-        fillImage = staminaSlider.fillRect.GetComponent<Image>();
-        fillImage.color = normalColor;
+        _fillImage = staminaSlider.fillRect.GetComponent<Image>();
+        _fillImage.color = normalColor;
     }
 
    
@@ -37,11 +37,11 @@ public class UIScript : MonoBehaviour
         
         if (playerController.GetCurrentStamina() <= lowStaminaThreshold)
         {
-            fillImage.color = lowStaminaColor;
+            _fillImage.color = lowStaminaColor;
         }
         else
         {
-            fillImage.color = normalColor;
+            _fillImage.color = normalColor;
         }
 
     }
