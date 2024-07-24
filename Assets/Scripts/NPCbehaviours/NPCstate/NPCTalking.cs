@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class NPCTalkingState : NPCState
 {
-    public DialogueManager dialogueManager; // Reference to the DialogueManager
-    public string[] npcResponses; // Dialogue responses
+    public DialogueManager dialogueManager; 
+    public string[] npcResponses; 
     private int currentResponseIndex = 0;
 
     public override void EnterState()
@@ -18,7 +18,7 @@ public class NPCTalkingState : NPCState
 
         if (dialogueManager != null && npcResponses.Length > 0)
         {
-            dialogueManager.DisplayDialogue(npcResponses[currentResponseIndex]); // Display first response
+            dialogueManager.DisplayDialogue(npcResponses[currentResponseIndex]); 
         }
     }
 
@@ -30,15 +30,15 @@ public class NPCTalkingState : NPCState
             return;
         }
         
-        // Check for player input to continue dialogue
-        if (Input.GetKeyDown(KeyCode.E) && npcBase.isPlayerNear) // Example: Press 'E' to continue dialogue
+        
+        if (Input.GetKeyDown(KeyCode.E) && npcBase.isPlayerNear) 
         {
             if (dialogueManager != null)
             {
                 currentResponseIndex++;
                 if (currentResponseIndex < npcResponses.Length)
                 {
-                    dialogueManager.DisplayDialogue(npcResponses[currentResponseIndex]); // Display next response
+                    dialogueManager.DisplayDialogue(npcResponses[currentResponseIndex]);
                 }
                 else
                 {
@@ -56,8 +56,8 @@ public class NPCTalkingState : NPCState
         animator.SetBool("IsTalking", false);
         if (dialogueManager != null)
         {
-            dialogueManager.ClearDialogue(); // Clear dialogue when exiting the state
-            dialogueManager.HideDialogue(); // Hide dialogue UI
+            dialogueManager.ClearDialogue(); 
+            dialogueManager.HideDialogue(); 
         }
     }
 }
