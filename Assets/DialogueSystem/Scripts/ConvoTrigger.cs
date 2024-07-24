@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -25,9 +24,9 @@ public class ConvoTrigger : MonoBehaviour
                 ConversationManager.sInstance.mCurrentConversation = mConversation;
                 ConversationManager.sInstance.ResetConvo();
                 ConversationManager.sInstance.mConversationActive = true;
-                
             }
         }
     }
+
 
 }
