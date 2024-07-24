@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Use this if you are using the standard UI Text
+using UnityEngine.UI; 
 using TMPro; 
 
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText; 
-    public GameObject dialoguePanel; // Panel to contain the dialogue text
+    public GameObject dialoguePanel;
 
     private void Start()
     {
