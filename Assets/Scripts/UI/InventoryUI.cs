@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -9,6 +12,11 @@ public class InventoryUI : MonoBehaviour
     public Transform itemsParent; 
     public GameObject inventorySlotPrefab;
 
+    public GameObject inspectionCanvas;  
+    public TextMeshProUGUI itemDescriptionText;
+    public TextMeshProUGUI itemTitle;
+    public Image inspectImage;
+    
     private Inventory inventory;
     private int selectedIndex = -1;
 
@@ -44,7 +52,7 @@ public class InventoryUI : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf); 
         }
@@ -52,6 +60,10 @@ public class InventoryUI : MonoBehaviour
         if (inventoryPanel.activeSelf)
         {
             HandleSelection();
+        }
+        if (inspectionCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitInspection();
         }
     }
 
@@ -73,9 +85,29 @@ public class InventoryUI : MonoBehaviour
             UpdateUI();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             UseSelectedItem();
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            InspectSelectedItem();
+        }
+    }
+
+    private void InspectSelectedItem()
+    {
+        if (selectedIndex >= 0 && selectedIndex < inventory.items.Count)
+        {
+            if (selectedIndex >= 0 && selectedIndex < inventory.items.Count)
+            {
+                InventoryItems selectedItem = inventory.items[selectedIndex];
+                itemDescriptionText.text = selectedItem.itemDescription;
+                itemTitle.text = selectedItem.itemName;
+                inspectImage.sprite = selectedItem.itemIcons;
+                inspectionCanvas.SetActive(true);
+            }
+           
         }
     }
 
@@ -85,9 +117,11 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryItems selectedItem = inventory.items[selectedIndex];
             Debug.Log("Using item: " + selectedItem.itemName);
-           
         }
     }
-
+    void ExitInspection()
+    {
+        inspectionCanvas.SetActive(false);
+    }
    
 }
