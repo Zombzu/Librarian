@@ -198,6 +198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6028616914603381737}
     m_Modifications:
+    - target: {fileID: 583065131842688381, guid: 7b24f6b4ac1b3e04289bc9662baeb809, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e22474d8a9ad834a8bd894933ee0d88, type: 2}
     - target: {fileID: 6031969790103550011, guid: 7b24f6b4ac1b3e04289bc9662baeb809, type: 3}
       propertyPath: m_Name
       value: office.keyboard245 (1)
@@ -276,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: office.computer244 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4105100866891434543, guid: a653e3d32c4617449882c509dbe06690, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e22474d8a9ad834a8bd894933ee0d88, type: 2}
     - target: {fileID: 8744204647521982019, guid: a653e3d32c4617449882c509dbe06690, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7647057
@@ -346,6 +354,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6028616914603381737}
     m_Modifications:
+    - target: {fileID: 4499861082417030963, guid: 2e90be79e03039944884907140d4f1d5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77f7a7474336ddd48a6dbd0f4945c0b5, type: 2}
     - target: {fileID: 5947467722309690760, guid: 2e90be79e03039944884907140d4f1d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.761275
@@ -424,6 +436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: office.monitor243 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 979999144846484819, guid: 821a9079dc55a964380c6215c98b377e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 82cfb647b9b9ccd45b67eb3c702a6654, type: 2}
     - target: {fileID: 1205251490295066305, guid: 821a9079dc55a964380c6215c98b377e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7647057
@@ -494,6 +510,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6028616914603381737}
     m_Modifications:
+    - target: {fileID: 1588892414562443105, guid: 8457a4fe41b99a14dbf6f2a4ce4b1fc1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f918b67f0ad763489a0c7fa874c9486, type: 2}
     - target: {fileID: 5178840483625276599, guid: 8457a4fe41b99a14dbf6f2a4ce4b1fc1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7647057
