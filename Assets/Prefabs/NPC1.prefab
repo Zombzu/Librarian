@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd209ceff53f7940be4e96987c9bb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mConversation: {fileID: 8557680908183891811}
+  mConversation: {fileID: 451243736816639768}
 --- !u!1 &6635618120372305112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,7 +2407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349711220572890019}
-  - component: {fileID: 8557680908183891811}
+  - component: {fileID: 451243736816639768}
   m_Layer: 0
   m_Name: NPCConvo
   m_TagString: Untagged
@@ -2430,7 +2430,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7077493950800039852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8557680908183891811
+--- !u!114 &451243736816639768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2445,7 +2445,7 @@ MonoBehaviour:
   mStartNode: {fileID: 0}
   mCurrentNode: {fileID: 0}
   mNode: {fileID: 0}
-  mOtherName: what up boy
+  mOtherName: GG
 --- !u!1 &7811207147374774743
 GameObject:
   m_ObjectHideFlags: 0
