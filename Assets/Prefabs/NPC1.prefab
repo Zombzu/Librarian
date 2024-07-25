@@ -1782,54 +1782,6 @@ Transform:
   - {fileID: 4309383744254354895}
   m_Father: {fileID: 8085031432784006546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5867478196092524982
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3449959712238567785}
-  - component: {fileID: 6626750811672226913}
-  m_Layer: 0
-  m_Name: NPCCOnvo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3449959712238567785
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5867478196092524982}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7077493950800039852}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6626750811672226913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5867478196092524982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ab3fa872caa52439876186a7540e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mStartNode: {fileID: 0}
-  mCurrentNode: {fileID: 0}
-  mNode: {fileID: 0}
-  mOtherName: NPCTester
 --- !u!1 &6002756482717191885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +1894,7 @@ GameObject:
   - component: {fileID: 7789182177572493684}
   - component: {fileID: 3872214621027292766}
   - component: {fileID: 4398293741570922166}
+  - component: {fileID: 3558620567344479235}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: Untagged
@@ -1968,7 +1921,7 @@ Transform:
   - {fileID: 6212371897727692973}
   - {fileID: 5475080162114048070}
   - {fileID: 7881142423270254628}
-  - {fileID: 3449959712238567785}
+  - {fileID: 4349711220572890019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -86.863, z: 0}
 --- !u!95 &4197877897682923699
@@ -2116,6 +2069,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3558620567344479235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632803303057195255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd209ceff53f7940be4e96987c9bb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mConversation: {fileID: 8557680908183891811}
 --- !u!1 &6635618120372305112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,6 +2398,54 @@ Transform:
   - {fileID: 1553908671378114646}
   m_Father: {fileID: 5671059060063815976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7770260714887612425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4349711220572890019}
+  - component: {fileID: 8557680908183891811}
+  m_Layer: 0
+  m_Name: NPCConvo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4349711220572890019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770260714887612425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7077493950800039852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8557680908183891811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770260714887612425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ab3fa872caa52439876186a7540e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mStartNode: {fileID: 0}
+  mCurrentNode: {fileID: 0}
+  mNode: {fileID: 0}
+  mOtherName: what up boy
 --- !u!1 &7811207147374774743
 GameObject:
   m_ObjectHideFlags: 0

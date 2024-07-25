@@ -4,27 +4,67 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-    public Transform playerBody;
 
-    private float xRotation = 0f;
-    
-    // Start is called before the first frame update
+
+    float mouseX;
+    float mouseY;
+
+    private float rotationX = 0f;
+    private float sensX = 2f;
+
+    public float mouseSen;
+
+    public GameObject cam;
+
+    [HideInInspector]
+
+
+    bool mCanLook = true;
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); 
+        mCanLook = !ConversationManager.sInstance.mConversationActive;
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); 
-        playerBody.Rotate(Vector3.up * mouseX); 
+        if (mCanLook)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            mouseX = Input.GetAxis("Mouse X");
+            mouseY = Input.GetAxis("Mouse Y");
+
+            mouseLook(mouseX, mouseY);
+
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    void mouseLook(float mouseX, float mouseY)
+    {
+
+        rotationX += mouseY * sensX;
+        rotationX = Mathf.Clamp(rotationX, -90, 90);
+
+        if (mouseX > 0)
+        {
+            transform.Rotate(Vector3.up * mouseSen * mouseX);
+        }
+        if (mouseX < 0)
+        {
+            transform.Rotate(-Vector3.up * mouseSen * -mouseX);
+        }
+        cam.transform.localEulerAngles = new Vector3(-rotationX, cam.transform.localEulerAngles.y, cam.transform.localEulerAngles.z);
     }
 }
