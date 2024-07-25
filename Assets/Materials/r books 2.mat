@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: chair
+  m_Name: r books 2
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: e5bb330b374d1004eb2ea27c13a8b9b8, type: 2}
+  m_Parent: {fileID: 2100000, guid: 382b0b079c345b441a05015471e64324, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -23,20 +23,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 3.19, y: 1.79}
-        m_Offset: {x: 0.38, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: -1.34, y: -0.93}
+        m_Offset: {x: 0.85, y: -0.11}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f9e9852122f7c6b4682b73db86456319, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 23049b57ecbe3fb43899472961779041, type: 3}
+        m_Scale: {x: -1.34, y: -0.93}
+        m_Offset: {x: 0.85, y: -0.11}
     m_Ints: []
-    m_Floats:
-    - _Glossiness: 0.1
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
