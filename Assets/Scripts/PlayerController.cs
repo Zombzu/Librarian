@@ -16,13 +16,14 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 velocity;
-
+    private bool hasMoved;
     
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         currentStamina = maxStamina;
+       
     }
 
     void Update()
@@ -31,7 +32,18 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = -2f; 
         }
-        
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        if (direction.magnitude >= 0.1f)
+        {
+            if (!hasMoved)
+            {
+                hasMoved = true;
+                OnFirstMove();
+            }
+        }
+
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         
@@ -66,7 +78,12 @@ public class PlayerController : MonoBehaviour
        
     }
 
-   //function for UI
+    private void OnFirstMove()
+    {
+        
+    }
+
+    //function for UI
     public float GetCurrentStamina()
     {
         return currentStamina;

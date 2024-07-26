@@ -4,11 +4,12 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using PolyAndCode.UI;
+
 
 public class InventoryUI : MonoBehaviour
 {
-    public GameObject inventoryPanel;
+   public GameObject inventoryPanel;
     public Transform itemsParent; 
     public GameObject inventorySlotPrefab;
 
@@ -16,9 +17,13 @@ public class InventoryUI : MonoBehaviour
     public TextMeshProUGUI itemDescriptionText;
     public TextMeshProUGUI itemTitle;
     public Image inspectImage;
+    public RecyclableScrollRect scrollRect;
+    public float scrollSpeed;
     
     private Inventory inventory;
     private int selectedIndex = -1;
+    private bool isSelectingForInteraction = false;
+    private InteractableObjects currentInteractableObject;
 
     void Start()
     {
@@ -26,7 +31,13 @@ public class InventoryUI : MonoBehaviour
         inventory.onInventoryChangedCallback += UpdateUI;
         UpdateUI();
         inventoryPanel.SetActive(false);
-        
+    }
+    
+    public void OpenInventoryForInteraction(InteractableObjects interactableObject)
+    {
+        isSelectingForInteraction = true;
+        currentInteractableObject = interactableObject;
+        inventoryPanel.SetActive(true);
     }
 
     void UpdateUI()
@@ -76,18 +87,32 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            selectedIndex = (selectedIndex + 1) % inventory.items.Count;
-            UpdateUI();
+            if (selectedIndex < inventory.items.Count - 1)  
+            {
+                scrollRect.horizontalNormalizedPosition += scrollSpeed * Time.deltaTime;
+                selectedIndex++;
+               ScrollToItem(selectedIndex);
+                UpdateUI();  
+            }
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            selectedIndex = (selectedIndex - 1 + inventory.items.Count) % inventory.items.Count;
-            UpdateUI();
+            if (selectedIndex > 0)  
+            {
+                scrollRect.horizontalNormalizedPosition -= scrollSpeed * Time.deltaTime;
+                selectedIndex--;  
+                ScrollToItem(selectedIndex);  
+                UpdateUI();  
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
             UseSelectedItem();
+            if (isSelectingForInteraction)
+            {
+                UseSelectedItemForInteraction();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {
@@ -99,15 +124,11 @@ public class InventoryUI : MonoBehaviour
     {
         if (selectedIndex >= 0 && selectedIndex < inventory.items.Count)
         {
-            if (selectedIndex >= 0 && selectedIndex < inventory.items.Count)
-            {
-                InventoryItems selectedItem = inventory.items[selectedIndex];
-                itemDescriptionText.text = selectedItem.itemDescription;
-                itemTitle.text = selectedItem.itemName;
-                inspectImage.sprite = selectedItem.itemIcons;
-                inspectionCanvas.SetActive(true);
-            }
-           
+            InventoryItems selectedItem = inventory.items[selectedIndex];
+            itemDescriptionText.text = selectedItem.itemDescription;
+            itemTitle.text = selectedItem.itemName;
+            inspectImage.sprite = selectedItem.itemIcons;
+            inspectionCanvas.SetActive(true);
         }
     }
 
@@ -119,9 +140,27 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("Using item: " + selectedItem.itemName);
         }
     }
+    void ScrollToItem(int itemIndex)
+    {
+        Canvas.ForceUpdateCanvases(); 
+
+        float normalizedPosition = (float)itemIndex / (inventory.items.Count - 1);
+        scrollRect.horizontalNormalizedPosition = normalizedPosition;
+    }
+    
     void ExitInspection()
     {
         inspectionCanvas.SetActive(false);
     }
-   
+
+    private void UseSelectedItemForInteraction()
+    {
+        if (selectedIndex >= 0 && selectedIndex < inventory.items.Count)
+        {
+            InventoryItems selectedItem = inventory.items[selectedIndex];
+            currentInteractableObject.TryUseItem(selectedItem);
+            inventoryPanel.SetActive(false);
+            isSelectingForInteraction = false;
+        }
+    }
 }
