@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class InteractableObjects : MonoBehaviour
 {
     public InventoryItems item;
+    public bool objectInteractable = true;
     private GameObject player;
     private bool _isWaitingForObject;
     private InventoryUI inventoryUI;
@@ -17,9 +19,10 @@ public class InteractableObjects : MonoBehaviour
         inventoryUI = FindObjectOfType<InventoryUI>();
     }
 
-    public void Interact( string objectTag, GameObject playerObject)
+    public void Interact( GameObject currentObject, GameObject playerObject)
     {
         player = playerObject;
+        string objectTag = currentObject.tag;
         Debug.Log(objectTag);
         if (objectTag == "Collect")
         {
@@ -28,6 +31,13 @@ public class InteractableObjects : MonoBehaviour
         if (objectTag == "Give")
         {
             ReceiveItem();
+        }
+
+        if (objectTag == "Phone")
+        {
+            Debug.Log("is Phone");
+            EventManager.Instance.CompleteObjective();
+            currentObject.GetComponent<InteractableObjects>().objectInteractable = false;
         }
     }
 

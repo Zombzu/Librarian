@@ -33,14 +33,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             
            InteractableObjects interactable = hit.collider.GetComponent<InteractableObjects>();
-            if (interactable != null)
+            if (interactable != null && interactable.objectInteractable)
             {
               //  interactionPrompt.SetActive(true);
               _currentObject = interactable.gameObject.GetComponent<Outline>(); 
               _currentObject.OutlineWidth = 3f;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    interactable.Interact(interactable.gameObject.tag, this.gameObject);
+                    interactable.Interact(interactable.gameObject, this.gameObject);
                 }
             }
         }

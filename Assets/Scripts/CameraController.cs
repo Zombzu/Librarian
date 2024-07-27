@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     public Transform playerBody;
     private float rotationX = 0f;
-    private float sensX = 100f;
 
     public float mouseSen;
 

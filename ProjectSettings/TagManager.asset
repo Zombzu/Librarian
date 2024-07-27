@@ -8,6 +8,7 @@ TagManager:
   - Collect
   - Mouse
   - Give
+  - Phone
   layers:
   - Default
   - TransparentFX
