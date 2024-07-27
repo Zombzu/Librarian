@@ -17,7 +17,7 @@ public class InventoryUI : MonoBehaviour
     public TextMeshProUGUI itemDescriptionText;
     public TextMeshProUGUI itemTitle;
     public Image inspectImage;
-    public ScrollRect scrollRect;
+    public RecyclableScrollRect scrollRect;
     public float scrollSpeed;
     
     private Inventory inventory;
@@ -91,7 +91,7 @@ public class InventoryUI : MonoBehaviour
             {
                 scrollRect.horizontalNormalizedPosition += scrollSpeed * Time.deltaTime;
                 selectedIndex++;
-                StartCoroutine( ScrollToItem(selectedIndex)); 
+               ScrollToItem(selectedIndex);
                 UpdateUI();  
             }
         }
@@ -101,7 +101,7 @@ public class InventoryUI : MonoBehaviour
             {
                 scrollRect.horizontalNormalizedPosition -= scrollSpeed * Time.deltaTime;
                 selectedIndex--;  
-               StartCoroutine( ScrollToItem(selectedIndex));  
+                ScrollToItem(selectedIndex);  
                 UpdateUI();  
             }
         }
@@ -140,22 +140,12 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("Using item: " + selectedItem.itemName);
         }
     }
-    IEnumerator ScrollToItem(int itemIndex)
+    void ScrollToItem(int itemIndex)
     {
-        
-        Debug.Log(scrollRect.horizontalNormalizedPosition.ToString());
         Canvas.ForceUpdateCanvases(); 
-        Debug.Log("should scroll");
+
         float normalizedPosition = (float)itemIndex / (inventory.items.Count - 1);
-        Debug.Log("Normalized Pos: " + normalizedPosition.ToString());
-        yield return new WaitForEndOfFrame();
-       scrollRect.movementType = ScrollRect.MovementType.Elastic;
-       scrollRect.elasticity = 0f;
-       scrollRect.horizontalNormalizedPosition = normalizedPosition;
-        Debug.Log(scrollRect.horizontalNormalizedPosition.ToString());
-        yield return new WaitForEndOfFrame();
-         scrollRect.movementType = ScrollRect.MovementType.Clamped;
-         yield return new WaitForEndOfFrame();
+        scrollRect.horizontalNormalizedPosition = normalizedPosition;
     }
     
     void ExitInspection()

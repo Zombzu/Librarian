@@ -14,7 +14,6 @@ public class EventManager : MonoBehaviour
     public GameEvents currentEvent;
     public SoundEmitter phoneDialogue;
     public int eventIndex = 0;
-    public GameObject[] questItems;
     private void Awake()
     {
         if (Instance == null)
@@ -44,10 +43,7 @@ public class EventManager : MonoBehaviour
         switch (eventIndex)
         {
             case 4:
-                for (int i = 0; i < 5; i++)
-                {
-                    questItems[i].GetComponent<InteractableObjects>().objectInteractable = true;
-                }
+                
                 break;
         }
     }

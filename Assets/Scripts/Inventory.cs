@@ -17,7 +17,6 @@ public class Inventory : MonoBehaviour
 
             if (onInventoryChangedCallback != null)
                 onInventoryChangedCallback.Invoke();
-            item.gameObject.SetActive(false);
 
             return true;
         }
