@@ -17,7 +17,7 @@ public class InventoryUI : MonoBehaviour
     public TextMeshProUGUI itemDescriptionText;
     public TextMeshProUGUI itemTitle;
     public Image inspectImage;
-    public RecyclableScrollRect scrollRect;
+    public ScrollRect scrollRect;
     public float scrollSpeed;
     
     private Inventory inventory;
@@ -91,7 +91,7 @@ public class InventoryUI : MonoBehaviour
             {
                 scrollRect.horizontalNormalizedPosition += scrollSpeed * Time.deltaTime;
                 selectedIndex++;
-               ScrollToItem(selectedIndex);
+                StartCoroutine( ScrollToItem(selectedIndex)); 
                 UpdateUI();  
             }
         }
@@ -101,7 +101,7 @@ public class InventoryUI : MonoBehaviour
             {
                 scrollRect.horizontalNormalizedPosition -= scrollSpeed * Time.deltaTime;
                 selectedIndex--;  
-                ScrollToItem(selectedIndex);  
+               StartCoroutine( ScrollToItem(selectedIndex));  
                 UpdateUI();  
             }
         }
@@ -140,12 +140,22 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("Using item: " + selectedItem.itemName);
         }
     }
-    void ScrollToItem(int itemIndex)
+    IEnumerator ScrollToItem(int itemIndex)
     {
+        
+        Debug.Log(scrollRect.horizontalNormalizedPosition.ToString());
         Canvas.ForceUpdateCanvases(); 
-
+        Debug.Log("should scroll");
         float normalizedPosition = (float)itemIndex / (inventory.items.Count - 1);
-        scrollRect.horizontalNormalizedPosition = normalizedPosition;
+        Debug.Log("Normalized Pos: " + normalizedPosition.ToString());
+        yield return new WaitForEndOfFrame();
+       scrollRect.movementType = ScrollRect.MovementType.Elastic;
+       scrollRect.elasticity = 0f;
+       scrollRect.horizontalNormalizedPosition = normalizedPosition;
+        Debug.Log(scrollRect.horizontalNormalizedPosition.ToString());
+        yield return new WaitForEndOfFrame();
+         scrollRect.movementType = ScrollRect.MovementType.Clamped;
+         yield return new WaitForEndOfFrame();
     }
     
     void ExitInspection()
