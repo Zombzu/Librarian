@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
-
+    public GameObject[] questItems;
     public GameEvents startEvent;
     public TextMeshProUGUI objectiveLabel;
     public GameEvents currentEvent;
@@ -43,7 +43,10 @@ public class EventManager : MonoBehaviour
         switch (eventIndex)
         {
             case 4:
-                
+                for (int i = 0; i < 5; i++)
+                {
+                    questItems[i].GetComponent<InteractableObjects>().objectInteractable = true;
+                }
                 break;
         }
     }
